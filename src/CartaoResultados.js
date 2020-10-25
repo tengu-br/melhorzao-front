@@ -39,8 +39,8 @@ export default function CartaoResultados() {
         </CardContent>
       </CardActionArea>
       <CardActions>
-        <Button justify="center" variant="contained" color="primary" component={Link} naked href="/votar">
-          Clique Aqui Para Votar
+        <Button justify="center" variant="contained" color="primary" component={Link} naked href="/resultados">
+          Clique Aqui Para Ver
     </Button>
       </CardActions>
     </Card>

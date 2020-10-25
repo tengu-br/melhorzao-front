@@ -9,7 +9,7 @@ import Copyright from '../src/Copyright';
 import { Grid, Paper, Card } from '@material-ui/core';
 import CartaoVotar from '../src/CartaoVotar';
 import CartaoResultados from '../src/CartaoResultados';
-import Item from '../src/Item'
+import CoupleItem from '../src/CoupleItem'
 
 export default function Votar() {
     return (
@@ -21,11 +21,8 @@ export default function Votar() {
                             O que é melhor?
                         </Typography>
                     </Grid>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <Item />
-                    </Grid>
-                    <Grid item xs={12} sm={12} md={6}>
-                        <Item />
+                    <Grid item xs={12} sm={12} md={12}>
+                        <CoupleItem />
                     </Grid>
                     <Grid item xs={12} sm={12} md={12}>
                         <Copyright />
