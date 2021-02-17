@@ -25,10 +25,9 @@ function CoupleItem() {
             .then(
                 (result) => {
                     setRand({ ...result });
-                    console.log({ ...result })
                 },
                 (error) => {
-                    console.log(error)
+                    // console.log(error)
                     setRand({
                         playerA: {
                             name: "",
@@ -43,15 +42,54 @@ function CoupleItem() {
             )
     }, []);
 
+    function handleClick(e, param) {
+        e.preventDefault()
+
+        // PARAM TRUE = A, FALSE = B
+        var nameWinner, eloWinner, nameLoser, eloLoser
+
+        if (param) {
+            nameWinner = rand.playerA.name
+            eloWinner = rand.playerA.elo
+            nameLoser = rand.playerB.name
+            eloLoser = rand.playerB.elo
+        } else {
+            nameWinner = rand.playerB.name
+            eloWinner = rand.playerB.elo
+            nameLoser = rand.playerA.name
+            eloLoser = rand.playerA.elo
+        }
+
+        fetch("http://127.0.0.1:3001/matchupSync", {
+            method: 'POST',
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ "playerA": { "name": nameWinner, "elo": eloWinner }, "playerB": { "name": nameLoser, "elo": eloLoser } }),
+            redirect: 'follow'
+        })
+            .then(response => response.json())
+            .then(
+                (result) => {
+                    console.log(result)
+                    // refresh page
+                    location = location
+                },
+                (error) => {
+                    console.log(error)
+                }
+            )
+    }
+
     return (
         <Grid container justify="center" spacing={4}>
             <Grid item xs={12} sm={12} md={6}>
                 <h1>Nome: {rand.playerA.name}</h1>
                 <h2>Elo: {rand.playerA.elo}</h2>
+                <Button variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
-            <h1>Nome: {rand.playerB.name}</h1>
-            <h2>Elo: {rand.playerB.elo}</h2>
+                <h1>Nome: {rand.playerB.name}</h1>
+                <h2>Elo: {rand.playerB.elo}</h2>
+                <Button variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
             </Grid>
         </Grid>
     )
