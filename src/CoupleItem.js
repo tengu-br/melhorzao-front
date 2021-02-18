@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Paper, Card, Button } from '@material-ui/core';
+import Zoom from 'react-reveal/Zoom';
+import Rotate from 'react-reveal/Rotate';
+
 
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
 
-function CoupleItem() {
+function CoupleItem({ setShow, show, setMode, mode }) {
 
     const [rand, setRand] = useState({
         playerA: {
@@ -44,6 +47,7 @@ function CoupleItem() {
 
     function handleClick(e, param) {
         e.preventDefault()
+        setShow(!show)
 
         // PARAM TRUE = A, FALSE = B
         var nameWinner, eloWinner, nameLoser, eloLoser
@@ -53,11 +57,27 @@ function CoupleItem() {
             eloWinner = rand.playerA.elo
             nameLoser = rand.playerB.name
             eloLoser = rand.playerB.elo
+            if (rand.playerA.elo < rand.playerB.elo) {
+                setMode(false)
+            } else {
+                setMode(true)
+                setTimeout(() => {
+                    location = location
+                }, 2000);
+            }
         } else {
             nameWinner = rand.playerB.name
             eloWinner = rand.playerB.elo
             nameLoser = rand.playerA.name
             eloLoser = rand.playerA.elo
+            if (rand.playerB.elo < rand.playerA.elo) {
+                setMode(false)
+            } else {
+                setMode(true)
+                setTimeout(() => {
+                    location = location
+                }, 2000);
+            }
         }
 
         fetch("http://127.0.0.1:3001/matchupSync", {
@@ -69,14 +89,15 @@ function CoupleItem() {
             .then(response => response.json())
             .then(
                 (result) => {
-                    console.log(result)
+                    // console.log(result)
                     // refresh page
-                    location = location
+                    // location = location
                 },
                 (error) => {
-                    console.log(error)
+                    // console.log(error)
                 }
             )
+
     }
 
     return (
@@ -84,12 +105,16 @@ function CoupleItem() {
             <Grid item xs={12} sm={12} md={6}>
                 <h1>Nome: {rand.playerA.name}</h1>
                 <h2>Elo: {rand.playerA.elo}</h2>
-                <Button variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
+                {!show &&
+                    <Button variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
+                }
             </Grid>
             <Grid item xs={12} sm={12} md={6}>
                 <h1>Nome: {rand.playerB.name}</h1>
                 <h2>Elo: {rand.playerB.elo}</h2>
-                <Button variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
+                {!show &&
+                    <Button variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
+                }
             </Grid>
         </Grid>
     )

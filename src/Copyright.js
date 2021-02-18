@@ -8,7 +8,7 @@ export default function Copyright() {
       {'criado por '}
       <MuiLink color="inherit" href="https://vitorcosta.me/">
         vitor costa
-      </MuiLink>{' '}
+      </MuiLink>{' e dan swano em '}
       {new Date().getFullYear()}
       {'.'}
     </Typography>
