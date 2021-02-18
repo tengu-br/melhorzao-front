@@ -4,12 +4,9 @@ import { Grid, Paper, Card, Button } from '@material-ui/core';
 import Bounce from 'react-reveal/Bounce';
 import RightWrong from '../src/RightWrong'
 
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-};
 
-function CoupleItem() {
+
+function CoupleItem({ leftBg, rightBg, rand, setRand }) {
 
     const [show, setShow] = useState(false)
     const [mode, setMode] = useState(false)
@@ -24,26 +21,15 @@ function CoupleItem() {
         zIndex: 100,
         width: "80vw",
         maxWidth: "320px",
-        top:"15vh"
+        top: "15vh"
     };
 
-    const bgStyleLeft = {
+    const bgStyle = {
         backgroundPosition: "center",
         backgroundSize: "cover",
         filter: "brightness(50%)",
         color: "white",
         height: "100%",
-        backgroundImage: "url(http://api.higherlowergame.com/_client/images/general/the-diary-of-anne-frank.jpg)"
-    };
-
-    const bgStyleRight = {
-        backgroundPosition: "center",
-        backgroundSize: "cover",
-        filter: "brightness(50%)",
-        color: "white",
-        height: "100%",
-        width: "100%",
-        backgroundImage: "url(http://api.higherlowergame.com/_client/images/general/water-polo.jpg)"
     };
 
     const infoStyle = {
@@ -59,46 +45,13 @@ function CoupleItem() {
         display: "flex",
         flexDirection: "column",
         justifyContent: "center",
-        textAlign:"center",
+        textAlign: "center",
         marginLeft: 'auto',
         marginRight: 'auto',
         right: "0px",
         left: "0px",
     };
 
-    const [rand, setRand] = useState({
-        playerA: {
-            name: "",
-            elo: ""
-        },
-        playerB: {
-            name: "",
-            elo: ""
-        },
-    });
-
-    useEffect(() => {
-        fetch("http://127.0.0.1:3001/coupleRandom", requestOptions)
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setRand({ ...result });
-                },
-                (error) => {
-                    // console.log(error)
-                    setRand({
-                        playerA: {
-                            name: "",
-                            elo: -1
-                        },
-                        playerB: {
-                            name: "",
-                            elo: -1
-                        },
-                    });
-                }
-            )
-    }, []);
 
     function handleClick(e, param) {
         e.preventDefault()
@@ -164,7 +117,7 @@ function CoupleItem() {
             </div>
             <Grid style={{ height: "100%", padding: 0 }} container justify="center">
                 <Grid style={{ height: "100%", padding: 0 }} item xs={6} >
-                    <div style={bgStyleLeft} />
+                    <div style={Object.assign({}, bgStyle, { backgroundImage: leftBg })} />
                     <div style={infoStyle}>
                         <div style={innerStyle}>
                             <h1 style={{ filter: "none", margin: 0 }}>{rand.playerA.name}</h1>
@@ -176,7 +129,7 @@ function CoupleItem() {
                     </div>
                 </Grid>
                 <Grid style={{ height: "100%", padding: 0 }} item xs={6}>
-                    <div style={bgStyleRight} />
+                    <div style={Object.assign({}, bgStyle, { backgroundImage: rightBg })} />
                     <div style={infoStyle}>
                         <div style={innerStyle}>
                             <h1 style={{ margin: 0 }}>{rand.playerB.name}</h1>
