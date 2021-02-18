@@ -1,15 +1,70 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Paper, Card, Button } from '@material-ui/core';
-import Zoom from 'react-reveal/Zoom';
-import Rotate from 'react-reveal/Rotate';
 
+import Bounce from 'react-reveal/Bounce';
+import RightWrong from '../src/RightWrong'
 
 var requestOptions = {
     method: 'GET',
     redirect: 'follow'
 };
 
-function CoupleItem({ setShow, show, setMode, mode }) {
+function CoupleItem() {
+
+    const [show, setShow] = useState(false)
+    const [mode, setMode] = useState(false)
+
+    const bounceDiv = {
+        position: 'absolute',
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        right: "0px",
+        left: "0px",
+        textAlign: "center",
+        zIndex: 100,
+        width: "80vw",
+        maxWidth: "320px",
+        top:"15vh"
+    };
+
+    const bgStyleLeft = {
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        filter: "brightness(50%)",
+        color: "white",
+        height: "100%",
+        backgroundImage: "url(http://api.higherlowergame.com/_client/images/general/the-diary-of-anne-frank.jpg)"
+    };
+
+    const bgStyleRight = {
+        backgroundPosition: "center",
+        backgroundSize: "cover",
+        filter: "brightness(50%)",
+        color: "white",
+        height: "100%",
+        width: "100%",
+        backgroundImage: "url(http://api.higherlowergame.com/_client/images/general/water-polo.jpg)"
+    };
+
+    const infoStyle = {
+        color: "white",
+        height: "100%",
+        width: "50%",
+        position: "absolute",
+        top: "0",
+        display: "flex",
+    };
+
+    const innerStyle = {
+        display: "flex",
+        flexDirection: "column",
+        justifyContent: "center",
+        textAlign:"center",
+        marginLeft: 'auto',
+        marginRight: 'auto',
+        right: "0px",
+        left: "0px",
+    };
 
     const [rand, setRand] = useState({
         playerA: {
@@ -101,22 +156,39 @@ function CoupleItem({ setShow, show, setMode, mode }) {
     }
 
     return (
-        <Grid container justify="center" spacing={4}>
-            <Grid item xs={12} sm={12} md={6}>
-                <h1>Nome: {rand.playerA.name}</h1>
-                <h2>Elo: {rand.playerA.elo}</h2>
-                {!show &&
-                    <Button variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
-                }
+        <div style={{ height: "100%", width: "100%" }}>
+            <div style={bounceDiv}>
+                <Bounce top when={show}>
+                    <RightWrong mode={mode} />
+                </Bounce>
+            </div>
+            <Grid style={{ height: "100%", padding: 0 }} container justify="center">
+                <Grid style={{ height: "100%", padding: 0 }} item xs={6} >
+                    <div style={bgStyleLeft} />
+                    <div style={infoStyle}>
+                        <div style={innerStyle}>
+                            <h1 style={{ filter: "none", margin: 0 }}>{rand.playerA.name}</h1>
+                            <h2>Elo: {rand.playerA.elo}</h2>
+                            {!show &&
+                                <Button style={{ zIndex: 100 }} variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
+                            }
+                        </div>
+                    </div>
+                </Grid>
+                <Grid style={{ height: "100%", padding: 0 }} item xs={6}>
+                    <div style={bgStyleRight} />
+                    <div style={infoStyle}>
+                        <div style={innerStyle}>
+                            <h1 style={{ margin: 0 }}>{rand.playerB.name}</h1>
+                            <h2>Elo: {rand.playerB.elo}</h2>
+                            {!show &&
+                                <Button style={{ zIndex: 100 }} variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
+                            }
+                        </div>
+                    </div>
+                </Grid>
             </Grid>
-            <Grid item xs={12} sm={12} md={6}>
-                <h1>Nome: {rand.playerB.name}</h1>
-                <h2>Elo: {rand.playerB.elo}</h2>
-                {!show &&
-                    <Button variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
-                }
-            </Grid>
-        </Grid>
+        </div>
     )
 }
 
