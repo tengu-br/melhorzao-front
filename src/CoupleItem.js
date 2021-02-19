@@ -6,7 +6,7 @@ import RightWrong from '../src/RightWrong'
 
 
 
-function CoupleItem({ leftBg, rightBg, rand, setRand }) {
+function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
 
     const [show, setShow] = useState(false)
     const [mode, setMode] = useState(false)
@@ -66,12 +66,9 @@ function CoupleItem({ leftBg, rightBg, rand, setRand }) {
             nameLoser = rand.playerB.name
             eloLoser = rand.playerB.elo
             if (rand.playerA.elo < rand.playerB.elo) {
-                setMode(false)
+                userLost()
             } else {
-                setMode(true)
-                setTimeout(() => {
-                    location = location
-                }, 2000);
+                userWon()
             }
         } else {
             nameWinner = rand.playerB.name
@@ -79,12 +76,9 @@ function CoupleItem({ leftBg, rightBg, rand, setRand }) {
             nameLoser = rand.playerA.name
             eloLoser = rand.playerA.elo
             if (rand.playerB.elo < rand.playerA.elo) {
-                setMode(false)
+                userLost()
             } else {
-                setMode(true)
-                setTimeout(() => {
-                    location = location
-                }, 2000);
+                userWon()
             }
         }
 
@@ -106,6 +100,21 @@ function CoupleItem({ leftBg, rightBg, rand, setRand }) {
                 }
             )
 
+    }
+
+    function userWon() {
+        localStorage.setItem('info', "a91e6e5a877cf8ecc25a8994b1340fa0")
+        setScore(Number(score) + 1)
+        setMode(true)
+        setTimeout(() => {
+            location = location
+        }, 2000);
+    }
+
+    function userLost() {
+        localStorage.setItem('info', "70f6e9bbb31edbe653d03434da33806c")
+        setMode(false)
+        setScore(0)
     }
 
     return (
