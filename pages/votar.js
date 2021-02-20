@@ -74,7 +74,6 @@ export default function Votar() {
 
     return (
         <div style={{ padding: 0, height: "100vh", width: "100vw", position: "relative" }}>
-
             <div style={{ height: "100%" }}>
                 <Grid style={{ height: "100%" }} container justify="center">
                     <Grid style={{ height: "100%" }} item xs={12} sm={12} md={12}>

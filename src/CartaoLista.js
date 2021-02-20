@@ -35,11 +35,11 @@ export default function CartaoLista({ image, title, header, chamada }) {
           image={image}
           title={title}
         />
-        <CardContent>
-          <Typography gutterBottom variant="h5" component="h2">
+        <CardContent style={{ backgroundColor: "#290D40" }}>
+          <Typography style={{ color: "#fff", fontFamily: "Fredoka One" }} gutterBottom variant="h5" component="h2">
             {header}
           </Typography>
-          <Typography variant="body2" color="textSecondary" component="p">
+          <Typography style={{ color: "#fff", fontFamily: "Roboto", fontSize:"1.2em" }} variant="body2" component="p">
             {chamada}
           </Typography>
         </CardContent>

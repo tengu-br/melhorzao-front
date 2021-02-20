@@ -5,17 +5,24 @@ import { red } from '@material-ui/core/colors';
 const theme = createMuiTheme({
   palette: {
     primary: {
-      main: '#556cd6',
+      main: '#270952',
     },
     secondary: {
-      main: '#19857b',
+      main: '#8E59D9',
     },
     error: {
       main: red.A400,
     },
     background: {
-      default: '#fff',
+      default: '#4A1874',
     },
+  },
+  typography: {
+    "fontFamily": `"Roboto", "Helvetica", "Arial","Fredoka One" , sans-serif`,
+    "fontSize": 14,
+    "fontWeightLight": 300,
+    "fontWeightRegular": 400,
+    "fontWeightMedium": 500
   },
 });
 
