@@ -12,7 +12,7 @@ export default function AnimatedBackground() {
 
     return (
         <div style={{ width: "100%", height: height, position: "absolute", zIndex: "-1", top: "0px", left: "0px" }}>
-            <ParticlesBg color="#9562BF" type="circle" num={7}  bg={true} />
+            <ParticlesBg color="#9562BF" type="circle" num={6}  bg={true} />
         </div>
     )
 }

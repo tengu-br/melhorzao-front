@@ -52,6 +52,24 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
         left: "0px",
     };
 
+    const buttonStyle = {
+        width: "90%",
+        minWidth: "250px",
+        maxWidth: "350px",
+        marginLeft: "auto",
+        marginRight: "auto",
+        fontSize: "1.2em",
+        fontWeight: "800",
+        borderRadius: "50px",
+        padding: "18px",
+        zIndex: 100,
+    }
+
+    const playerStyle = {
+
+        fontSize: "calc(2.5vw + 34px)"
+    }
+
 
     function handleClick(e, param) {
         e.preventDefault()
@@ -115,6 +133,9 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
         localStorage.setItem('info', "70f6e9bbb31edbe653d03434da33806c")
         setMode(false)
         setScore(0)
+        setTimeout(() => {
+            location = "/"
+        }, 2000);
     }
 
     return (
@@ -129,10 +150,10 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
                     <div style={Object.assign({}, bgStyle, { backgroundImage: leftBg })} />
                     <div style={infoStyle}>
                         <div style={innerStyle}>
-                            <h1 style={{ filter: "none", margin: 0 }}>{rand.playerA.name}</h1>
+                            <h1 style={playerStyle}>{rand.playerA.name}</h1>
                             <h2>Elo: {rand.playerA.elo}</h2>
                             {!show &&
-                                <Button style={{ zIndex: 100 }} variant="contained" color="primary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
+                                <Button style={buttonStyle} variant="contained" color="secondary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
                             }
                         </div>
                     </div>
@@ -141,10 +162,10 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
                     <div style={Object.assign({}, bgStyle, { backgroundImage: rightBg })} />
                     <div style={infoStyle}>
                         <div style={innerStyle}>
-                            <h1 style={{ margin: 0 }}>{rand.playerB.name}</h1>
+                            <h1 style={playerStyle}>{rand.playerB.name}</h1>
                             <h2>Elo: {rand.playerB.elo}</h2>
                             {!show &&
-                                <Button style={{ zIndex: 100 }} variant="contained" color="primary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
+                                <Button style={buttonStyle} variant="contained" color="secondary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
                             }
                         </div>
                     </div>

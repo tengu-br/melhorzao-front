@@ -84,7 +84,7 @@ export default function Votar() {
                     <h1>High Score: {highScore}</h1>
                 </div>
                 <div style={{ position: "absolute", bottom: "0px", right: "0px", color: "white", paddingRight: "18px" }}>
-                    <h1>Current Score: {score}</h1>
+                    <h1>Score: {score}</h1>
                 </div>
             </div>
         </div>

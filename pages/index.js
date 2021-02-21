@@ -7,103 +7,82 @@ import Link from '../src/Link'
 import Button from '@material-ui/core/Button';
 import Copyright from '../src/Copyright';
 import { Grid, Paper, Card } from '@material-ui/core';
-import CartaoLista from '../src/CartaoLista';
+import CartaoVotar from '../src/CartaoVotar';
 import CartaoResultados from '../src/CartaoResultados';
-import dynamic from 'next/dynamic'
-
-const DynamicComponentWithNoSSR = dynamic(() => import('../src/AnimatedBackground.js'), {
-    ssr: false
-})
 
 export default function Index() {
 
-    const titleStyle = {
-        marginTop: "18px",
-        color: "#fff",
-        fontFamily: 'Fredoka One'
-    }
+  const titleStyle = {
+    marginTop: "18px",
+    color: "#fff",
+    fontFamily: 'Fredoka One',
+    textAlign: "center"
+  }
 
-    const categorias = [
-        {
-            image: "https://material-ui.com/static/images/cards/contemplative-reptile.jpg",
-            title: "Contemplative Reptile",
-            header: "Animais",
-            chamada: "Os humanos podem ter dominado o mundo... Mas que animal domina o coração do povo?"
-        },
-        {
-            image: "https://placeimg.com/700/400/arch",
-            title: "Prédios",
-            header: "Arquitetura",
-            chamada: "Qual será o povo que desenvolveu a melhor arquitetura... De acordo com vocês!"
-        },
-        {
-            image: "https://placeimg.com/700/400/tech",
-            title: "Tecnologia",
-            header: "Tecnologia",
-            chamada: "A tecnologia nos ajuda a desenolver novas coisas, mas qual delas nos ajuda mais que as outras?"
-        },
-        {
-            image: "https://material-ui.com/static/images/cards/contemplative-reptile.jpg",
-            title: "Contemplative Reptile",
-            header: "Animais",
-            chamada: "Os humanos podem ter dominado o mundo... Mas que animal domina o coração do povo?"
-        },
-        {
-            image: "https://placeimg.com/700/400/arch",
-            title: "Prédios",
-            header: "Arquitetura",
-            chamada: "Qual será o povo que desenvolveu a melhor arquitetura... De acordo com vocês!"
-        },
-        {
-            image: "https://placeimg.com/700/400/tech",
-            title: "Tecnologia",
-            header: "Tecnologia",
-            chamada: "A tecnologia nos ajuda a desenolver novas coisas, mas qual delas nos ajuda mais que as outras?"
-        },
-        {
-            image: "https://material-ui.com/static/images/cards/contemplative-reptile.jpg",
-            title: "Contemplative Reptile",
-            header: "Animais",
-            chamada: "Os humanos podem ter dominado o mundo... Mas que animal domina o coração do povo?"
-        },
-        {
-            image: "https://placeimg.com/700/400/arch",
-            title: "Prédios",
-            header: "Arquitetura",
-            chamada: "Qual será o povo que desenvolveu a melhor arquitetura... De acordo com vocês!"
-        },
-        {
-            image: "https://placeimg.com/700/400/tech",
-            title: "Tecnologia",
-            header: "Tecnologia",
-            chamada: "A tecnologia nos ajuda a desenolver novas coisas, mas qual delas nos ajuda mais que as outras?"
-        },
-    ]
+  const bgStyle = {
+    zIndex: -1,
+    position: "absolute",
+    top: 0,
+    left: 0,
+    backgroundPosition: "center",
+    backgroundSize: "cover",
+    filter: "brightness(40%)",
+    color: "white",
+    height: "100%",
+    width: "100%",
+    backgroundImage: "url(/img/igor-karimov-YuipfPtOH1k-unsplash.jpg)"
+  };
 
-    // Cabeçalho
-    // <Grid item xs={12} sm={12} md={12}>
-    //     <Typography style={titleStyle} variant="h2" component="h1" gutterBottom>
-    //         Escolha uma categoria!<br />
-    //     </Typography>
-    // </Grid>
+  const buttonDiv = {
+    display: "flex",
+    flexDirection: "row",
+    justifyContent: "center",
+    textAlign: "center",
+    width: "100%",
+  }
 
-    return (
-        <Container maxWidth="md">
-            <Grid container justify="center" spacing={4} style={{ marginTop: "0px", paddingTop: "32px", marginBottom: "0px", paddingBottom: "32px" }}>
-                {categorias.map((categoria, mapIndex) => {
-                    return (
-                        <Grid item xs={12} sm={12} md={6} lg={4} key={mapIndex}>
-                            <CartaoLista
-                                image={categoria.image}
-                                title={categoria.title}
-                                header={categoria.header}
-                                chamada={categoria.chamada}
-                            />
-                        </Grid>
-                    )
-                })}
-            </Grid>
-            <DynamicComponentWithNoSSR />
-        </Container>
-    );
+  const buttonStyle = {
+    textDecoration: "none",
+    width: "100%",
+    fontSize: "1.2em",
+    fontWeight: "800",
+    borderRadius: "50px",
+    padding: "18px",
+  }
+
+  const linkStyle = {
+    textDecoration: "none",
+    width: "100%",
+    marginLeft: "8px",
+    marginRight: "8px",
+  }
+
+  return (
+    <Container maxWidth="md">
+      <div style={bgStyle} />
+      <Box my={4}>
+        <Grid container justify="center" spacing={4}>
+          <Grid item xs={12} sm={12} md={12}>
+            <Typography style={titleStyle} variant="h2" component="h1" gutterBottom>
+              quem é o<br />
+              melhorzão?
+            </Typography>
+          </Grid>
+          <Grid item xs={12} sm={12} md={6}>
+            <div style={buttonDiv}>
+              <Link href="/lista" style={linkStyle}>
+                <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Jogar</Button>
+              </Link>
+              <Link href="/sobre" style={linkStyle}>
+                <Button variant="contained" color="secondary" fullWidth style={buttonStyle}>Como Assim ?</Button>
+              </Link>
+            </div>
+          </Grid>
+          <Grid item xs={12} sm={12} md={12}>
+            <Copyright />
+          </Grid>
+        </Grid>
+      </Box>
+    </Container>
+  );
 }
