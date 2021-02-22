@@ -7,8 +7,6 @@ import Link from '../src/Link'
 import Button from '@material-ui/core/Button';
 import Copyright from '../src/Copyright';
 import { Grid, Paper, Card } from '@material-ui/core';
-import CartaoVotar from '../src/CartaoVotar';
-import CartaoResultados from '../src/CartaoResultados';
 
 export default function Index() {
 

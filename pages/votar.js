@@ -5,6 +5,7 @@ import Box from '@material-ui/core/Box';
 import Copyright from '../src/Copyright';
 import { Grid, Paper, Card } from '@material-ui/core';
 import CoupleItem from '../src/CoupleItem'
+import { useRouter } from 'next/router'
 
 var requestOptions = {
     method: 'GET',
@@ -13,6 +14,7 @@ var requestOptions = {
 
 export default function Votar() {
 
+    const router = useRouter()
     const [score, setScore] = useState(0)
     const [highScore, setHighScore] = useState(0)
 
@@ -48,6 +50,7 @@ export default function Votar() {
         } else {
             setScore(0)
         }
+        // router.query.cat
         fetch("http://127.0.0.1:3001/coupleRandom", requestOptions)
             .then(response => response.json())
             .then(

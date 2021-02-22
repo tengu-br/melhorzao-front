@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Paper, Card, Button } from '@material-ui/core';
-
+import Link from '../src/Link'
 import Bounce from 'react-reveal/Bounce';
 import RightWrong from '../src/RightWrong'
 
@@ -131,10 +131,12 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
 
     function userLost() {
         localStorage.setItem('info', "70f6e9bbb31edbe653d03434da33806c")
+        localStorage.setItem('finalMatchup', "col;rand1;rand2")
+        localStorage.setItem('finalScore', score)
         setMode(false)
         setScore(0)
         setTimeout(() => {
-            location = "/"
+            location = "/end"
         }, 2000);
     }
 

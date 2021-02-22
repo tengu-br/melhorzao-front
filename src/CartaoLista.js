@@ -22,7 +22,10 @@ export default function CartaoLista({ image, title, header, chamada }) {
   const router = useRouter()
 
   function handleClick(params) {
-    router.push('/votar')
+    router.push({
+      pathname: '/votar',
+      query: { cat: header },
+    })
   }
 
   return (
