@@ -25,9 +25,10 @@ export default function Index() {
     const titleStyle = {
         marginTop: "18px",
         color: "#fff",
-        fontFamily: 'Fredoka One',
+        fontFamily: 'Roboto',
         textAlign: "center",
-        fontSize: "3em"
+        fontSize: "3em",
+        fontWeight:"500"
     }
 
     const bgStyle = {

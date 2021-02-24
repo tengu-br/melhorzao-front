@@ -46,14 +46,14 @@ export default function About() {
               quem é o<br />melhorzão?
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={12}>
             <Typography style={titleStyle} variant="h2" component="h1" gutterBottom>
-              Como jogar:
+              Como jogar?
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={12} md={12}>
             <Typography style={textStyle} variant="h2" component="h1" gutterBottom>
-              Duas coisas vão aparecer na tela. Escolha a melhor delas.
+              Duas coisas vão aparecer na tela. Escolha o que a maioria acha melhor. Veja até onde você consegue acertar! Para participar e melhorar o ranking, clique em "votar" e dê o seu voto para as melhores coisas!
             </Typography>
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
@@ -80,7 +80,7 @@ export default function About() {
           </Grid>
           <Grid item xs={12} sm={12} md={12}>
             <Typography style={textStyle} variant="h2" component="h1" gutterBottom>
-              Os próprios jogadores! Cada jogo é analisado e os votos são utilizados para re-calcular a pontuação de cada item.
+              Os próprios jogadores! Participar dos jogos ( ao clicar no botão "Votar" ), faz com que os votos sejam utilizados para re-calcular a pontuação de cada item.
               A medida que mais jogos são jogados, o ranking é automaticamente atualizado.
               </Typography>
           </Grid>

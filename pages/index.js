@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Container from '@material-ui/core/Container';
 import Typography from '@material-ui/core/Typography';
 import Box from '@material-ui/core/Box';
-import ProTip from '../src/ProTip';
 import Link from '../src/Link'
 import Button from '@material-ui/core/Button';
 import Copyright from '../src/Copyright';
@@ -37,6 +36,7 @@ export default function Index() {
     justifyContent: "center",
     textAlign: "center",
     width: "100%",
+    marginTop: "18px",
   }
 
   const buttonStyle = {
@@ -55,6 +55,12 @@ export default function Index() {
     marginRight: "8px",
   }
 
+  useEffect(() => {
+    localStorage.setItem('plays', 0)
+    localStorage.setItem('majority', 0)
+    localStorage.setItem('score', 0)
+  }, []);
+
   return (
     <Container maxWidth="md">
       <div style={bgStyle} />
@@ -66,13 +72,18 @@ export default function Index() {
               melhorzão?
             </Typography>
           </Grid>
-          <Grid item xs={12} sm={12} md={6}>
+          <Grid item xs={12} sm={9} md={6}>
             <div style={buttonDiv}>
               <Link href="/lista" style={linkStyle}>
                 <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Jogar</Button>
               </Link>
               <Link href="/sobre" style={linkStyle}>
                 <Button variant="contained" color="secondary" fullWidth style={buttonStyle}>Como Assim ?</Button>
+              </Link>
+            </div>
+            <div style={buttonDiv}>
+              <Link href="/participar" style={linkStyle}>
+                <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Votar</Button>
               </Link>
             </div>
           </Grid>
