@@ -5,7 +5,7 @@ import Box from '@material-ui/core/Box';
 import Link from '../src/Link'
 import Button from '@material-ui/core/Button';
 import Copyright from '../src/Copyright';
-import { Grid, Paper, Card } from '@material-ui/core';
+import { Grid, Paper, Card, Tooltip } from '@material-ui/core';
 
 export default function Index() {
 
@@ -75,15 +75,21 @@ export default function Index() {
           <Grid item xs={12} sm={9} md={6}>
             <div style={buttonDiv}>
               <Link href="/lista" style={linkStyle}>
-                <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Jogar</Button>
+                <Tooltip title="Advinhe o que outros jogadores votaram como melhor!" placement="top">
+                  <Button alt="asdsad" variant="contained" color="secondary" fullWidth style={buttonStyle} >Jogar</Button>
+                </Tooltip>
               </Link>
               <Link href="/sobre" style={linkStyle}>
-                <Button variant="contained" color="secondary" fullWidth style={buttonStyle}>Como Assim ?</Button>
+                <Tooltip title="? ? ?" placement="top">
+                  <Button variant="contained" color="secondary" fullWidth style={buttonStyle}>Como Assim ?</Button>
+                </Tooltip>
               </Link>
             </div>
             <div style={buttonDiv}>
               <Link href="/participar" style={linkStyle}>
-                <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Votar</Button>
+                <Tooltip title="Participe e melhore o ranking!" placement="bottom">
+                  <Button variant="contained" color="secondary" fullWidth style={buttonStyle} >Votar</Button>
+                </Tooltip>
               </Link>
             </div>
           </Grid>

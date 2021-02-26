@@ -10,6 +10,8 @@ import Modal from '@material-ui/core/Modal';
 
 export default function Index() {
 
+    const rand = Math.floor(Math.random() * (5) + 1)
+
     const titleStyle = {
         marginTop: "18px",
         color: "#fff",
@@ -30,7 +32,7 @@ export default function Index() {
         color: "white",
         height: "100%",
         width: "100%",
-        backgroundImage: "url(http://www.higherlowergame.com/images/gifs/good-3.gif)"
+        backgroundImage: `url(http://www.higherlowergame.com/images/gifs/good-${rand}.gif)`
     };
 
     const bgStyleMatchup = {
