@@ -7,11 +7,6 @@ import { Grid, Paper, Card } from '@material-ui/core';
 import CoupleItem from '../src/CoupleItem'
 import { useRouter } from 'next/router'
 
-var requestOptions = {
-    method: 'GET',
-    redirect: 'follow'
-};
-
 export default function Votar() {
 
     const router = useRouter()
@@ -50,30 +45,35 @@ export default function Votar() {
         } else {
             setScore(0)
         }
-        // router.query.cat
-        fetch("http://127.0.0.1:3001/coupleRandom", requestOptions)
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    setRand({ ...result });
-                },
-                (error) => {
-                    // console.log(error)
-                    setRand({
-                        playerA: {
-                            name: "",
-                            elo: -1,
-                            url: ""
-                        },
-                        playerB: {
-                            name: "",
-                            elo: -1,
-                            url: ""
-                        },
-                    });
-                }
-            )
-    }, []);
+        if (router.query.cat) {
+            fetch("http://127.0.0.1:3001/coupleRandom", {
+                method: 'POST',
+                redirect: 'follow',
+                body: JSON.stringify({ "collection": router.query.cat }),
+                headers: { "Content-Type": "application/json" }
+            })
+                .then(response => response.json())
+                .then(
+                    (result) => {
+                        setRand({ ...result });
+                    },
+                    (error) => {
+                        setRand({
+                            playerA: {
+                                name: "",
+                                elo: -1,
+                                url: ""
+                            },
+                            playerB: {
+                                name: "",
+                                elo: -1,
+                                url: ""
+                            },
+                        });
+                    }
+                )
+        }
+    }, [router.query]);
 
     return (
         <div style={{ padding: 0, height: "100vh", width: "100vw", position: "relative" }}>

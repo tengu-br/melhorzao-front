@@ -10,21 +10,21 @@ import { useRouter } from 'next/router'
 
 const useStyles = makeStyles({
   root: {
-    maxWidth: 365,
+    textAlign: "center"
   },
   media: {
-    height: 140,
+    height: 190,
   },
 });
 
-export default function CartaoLista({ image, title, header, chamada }) {
+export default function CartaoLista({ image, title, header, chamada, query }) {
   const classes = useStyles()
   const router = useRouter()
 
   function handleClick(params) {
     router.push({
       pathname: '/votar',
-      query: { cat: header },
+      query: { cat: query },
     })
   }
 
@@ -40,7 +40,7 @@ export default function CartaoLista({ image, title, header, chamada }) {
           <Typography style={{ color: "#fff", fontFamily: "Fredoka One" }} gutterBottom variant="h5" component="h2">
             {header}
           </Typography>
-          <Typography style={{ color: "#fff", fontFamily: "Roboto", fontSize:"1.2em" }} variant="body2" component="p">
+          <Typography style={{ color: "#fff", fontFamily: "Roboto", fontSize: "1.2em" }} variant="body2" component="p">
             {chamada}
           </Typography>
         </CardContent>

@@ -1,8 +1,10 @@
 import React, { useState, useEffect } from 'react';
 import { Grid, Paper, Card, Button } from '@material-ui/core';
-import Link from './Link'
+import { useRouter } from 'next/router'
 
 function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority, setMajority }) {
+
+    const router = useRouter()
 
     const bgStyle = {
         backgroundPosition: "center",

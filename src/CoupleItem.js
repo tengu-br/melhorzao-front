@@ -3,11 +3,11 @@ import { Grid, Paper, Card, Button } from '@material-ui/core';
 import Link from '../src/Link'
 import Bounce from 'react-reveal/Bounce';
 import RightWrong from '../src/RightWrong'
-
-
+import { useRouter } from 'next/router'
 
 function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
 
+    const router = useRouter()
     const [show, setShow] = useState(false)
     const [mode, setMode] = useState(false)
 
@@ -125,7 +125,12 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
         setScore(Number(score) + 1)
         setMode(true)
         setTimeout(() => {
-            location = location
+            setShow(false)
+            setMode(false)
+            router.push({
+                pathname: '/votar',
+                query: { cat: router.query.cat },
+            })
         }, 2000);
     }
 
@@ -136,7 +141,10 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
         setMode(false)
         setScore(0)
         setTimeout(() => {
-            location = "/end"
+            router.push({
+                pathname: '/end'
+            })
+            setShow(false)
         }, 2000);
     }
 
