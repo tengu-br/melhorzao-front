@@ -56,13 +56,11 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
         e.preventDefault()
 
         // PARAM TRUE = A, FALSE = B
-        var nameWinner, eloWinner, nameLoser, eloLoser
+        var nameWinner, nameLoser
 
         if (param) {
             nameWinner = rand.playerA.name
-            eloWinner = rand.playerA.elo
             nameLoser = rand.playerB.name
-            eloLoser = rand.playerB.elo
             if (rand.playerA.elo < rand.playerB.elo) {
                 userLost()
             } else {
@@ -70,9 +68,7 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
             }
         } else {
             nameWinner = rand.playerB.name
-            eloWinner = rand.playerB.elo
             nameLoser = rand.playerA.name
-            eloLoser = rand.playerA.elo
             if (rand.playerB.elo < rand.playerA.elo) {
                 userLost()
             } else {
@@ -80,23 +76,12 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
             }
         }
 
-        fetch("http://127.0.0.1:3001/matchupSync", {
+        fetch("http://127.0.0.1:3001/matchup", {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ "playerA": { "name": nameWinner, "elo": eloWinner }, "playerB": { "name": nameLoser, "elo": eloLoser } }),
+            body: JSON.stringify({ "collection": rand.collection, "winner": nameWinner, "loser": nameLoser }),
             redirect: 'follow'
         })
-            .then(response => response.json())
-            .then(
-                (result) => {
-                    // console.log(result)
-                    // refresh page
-                    // location = location
-                },
-                (error) => {
-                    // console.log(error)
-                }
-            )
 
     }
 
@@ -121,7 +106,6 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
                     <div style={infoStyle}>
                         <div style={innerStyle}>
                             <h1 style={playerStyle}>{rand.playerA.name}</h1>
-                            <h2>Elo: {rand.playerA.elo}</h2>
                             <Button style={buttonStyle} variant="contained" color="secondary" onClick={(e) => handleClick(e, true)}>Isso é melhor</Button>
                         </div>
                     </div>
@@ -131,7 +115,6 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
                     <div style={infoStyle}>
                         <div style={innerStyle}>
                             <h1 style={playerStyle}>{rand.playerB.name}</h1>
-                            <h2>Elo: {rand.playerB.elo}</h2>
                             <Button style={buttonStyle} variant="contained" color="secondary" onClick={(e) => handleClick(e, false)}>Isso é melhor</Button>
                         </div>
                     </div>

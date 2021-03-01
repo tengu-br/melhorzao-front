@@ -46,7 +46,7 @@ export default function Votar() {
             setScore(0)
         }
         if (router.query.cat) {
-            fetch("http://127.0.0.1:3001/coupleRandom", {
+            fetch("http://127.0.0.1:3001/match", {
                 method: 'POST',
                 redirect: 'follow',
                 body: JSON.stringify({ "collection": router.query.cat }),

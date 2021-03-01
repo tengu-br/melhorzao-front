@@ -13,7 +13,7 @@ var requestOptions = {
     redirect: 'follow'
 };
 
-export default function Votar() {
+export default function Participar() {
 
     const router = useRouter()
     const [plays, setPlays] = useState(0)
@@ -52,6 +52,7 @@ export default function Votar() {
                 (error) => {
                     // console.log(error)
                     setRand({
+                        collection: "",
                         playerA: {
                             name: "",
                             elo: -1,
