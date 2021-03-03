@@ -13,7 +13,7 @@ export default function Index() {
     const [categorias, setCategorias] = useState([{ name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }])
 
     useEffect(() => {
-        fetch("http://127.0.0.1:3001/listaCollections", {
+        fetch(`${process.env.NEXT_PUBLIC_API_ADDR}/listaCollections`, {
             method: 'GET',
             redirect: 'follow'
         })

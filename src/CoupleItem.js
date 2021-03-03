@@ -96,7 +96,7 @@ function CoupleItem({ leftBg, rightBg, rand, setRand, score, setScore }) {
             }
         }
 
-        fetch("http://127.0.0.1:3001/perceivedMatchup", {
+        fetch(`${process.env.NEXT_PUBLIC_API_ADDR}/perceivedMatchup`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "collection": router.query.cat, "winner": nameWinner, "loser": nameLoser }),

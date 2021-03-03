@@ -43,7 +43,7 @@ export default function Participar() {
     });
 
     useEffect(() => {
-        fetch("http://127.0.0.1:3001/coupleRandom", requestOptions)
+        fetch(`${process.env.NEXT_PUBLIC_API_ADDR}/coupleRandom`, requestOptions)
             .then(response => response.json())
             .then(
                 (result) => {

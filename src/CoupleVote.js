@@ -76,7 +76,7 @@ function CoupleVote({ leftBg, rightBg, rand, setRand, plays, setPlays, majority,
             }
         }
 
-        fetch("http://127.0.0.1:3001/matchup", {
+        fetch(`${process.env.NEXT_PUBLIC_API_ADDR}/matchup`, {
             method: 'POST',
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify({ "collection": rand.collection, "winner": nameWinner, "loser": nameLoser }),
