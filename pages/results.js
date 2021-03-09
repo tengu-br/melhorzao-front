@@ -32,7 +32,7 @@ export default function Index() {
         color: "white",
         height: "100%",
         width: "100%",
-        backgroundImage: `url(http://www.higherlowergame.com/images/gifs/good-${rand}.gif)`
+        backgroundImage: `url("https://melhorzao-bucket.s3-sa-east-1.amazonaws.com/images/good-${rand}.gif")`
     };
 
     const bgStyleMatchup = {

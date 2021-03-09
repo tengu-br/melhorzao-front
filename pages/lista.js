@@ -10,7 +10,7 @@ const DynamicComponentWithNoSSR = dynamic(() => import('../src/AnimatedBackgroun
 
 export default function Index() {
 
-    const [categorias, setCategorias] = useState([{ name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }])
+    const [categorias, setCategorias] = useState([{ name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }, { name: "Loading" }])
 
     useEffect(() => {
         fetch(`${process.env.NEXT_PUBLIC_API_ADDR}/listaCollections`, {
@@ -45,7 +45,6 @@ export default function Index() {
                                 image={categoria.img}
                                 title={categoria.name}
                                 header={categoria.name}
-                                chamada={categoria.name}
                                 query={categoria.colName}
                             />
                         </Grid>

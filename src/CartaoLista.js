@@ -40,9 +40,6 @@ export default function CartaoLista({ image, title, header, chamada, query }) {
           <Typography style={{ color: "#fff", fontFamily: "Fredoka One" }} gutterBottom variant="h5" component="h2">
             {header}
           </Typography>
-          <Typography style={{ color: "#fff", fontFamily: "Roboto", fontSize: "1.2em" }} variant="body2" component="p">
-            {chamada}
-          </Typography>
         </CardContent>
       </CardActionArea>
     </Card >

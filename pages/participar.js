@@ -101,7 +101,7 @@ export default function Participar() {
                         <CoupleVote style={{ height: "100%" }}
                             plays={plays} setPlays={setPlays} rand={rand} setRand={setRand}
                             majority={majority} setMajority={setMajority}
-                            leftBg={`url(${rand.playerA.url})`} rightBg={`url(${rand.playerB.url})`} />
+                            leftBg={`url("${rand.playerA.url}")`} rightBg={`url("${rand.playerB.url}")`} />
                     </Grid>
                     <div style={{ position: "absolute", top: "30%", color: "white", paddingLeft: "18px" }}>
                         <h1>Votos: {plays}</h1>

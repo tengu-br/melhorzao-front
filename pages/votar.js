@@ -74,13 +74,13 @@ export default function Votar() {
                 )
         }
     }, [router.query]);
-
+    
     return (
         <div style={{ padding: 0, height: "100vh", width: "100vw", position: "relative" }}>
             <div style={{ height: "100%" }}>
                 <Grid style={{ height: "100%" }} container justify="center">
                     <Grid style={{ height: "100%" }} item xs={12} sm={12} md={12}>
-                        <CoupleItem style={{ height: "100%" }} score={score} setScore={setScore} rand={rand} setRand={setRand} leftBg={`url(${rand.playerA.url})`} rightBg={`url(${rand.playerB.url})`} />
+                        <CoupleItem style={{ height: "100%" }} score={score} setScore={setScore} rand={rand} setRand={setRand} leftBg={`url("${rand.playerA.url}")`} rightBg={`url("${rand.playerB.url}")`} />
                     </Grid>
                 </Grid>
                 <div style={{ position: "absolute", bottom: "0px", color: "white", paddingLeft: "18px" }}>
